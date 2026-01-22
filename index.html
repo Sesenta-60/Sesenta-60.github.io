@@ -45,7 +45,6 @@
     </style>
 </head>
 <body>
-<<<<<<< HEAD
     <div class="desktop">
         <div class="window">
             <div class="title-bar">
@@ -77,11 +76,40 @@
             children: []
         };
 
+        // --- ZONA DE EDICIÓN FÁCIL ---
+        // Aquí puedes agregar tus archivos fácilmente.
+        // El número (1, 2, etc.) corresponde a la carpeta de la Clase.
+        const contenidoClases = {
+            1: [
+                { nombre: "resumen de clase 1.txt", texto: "diferencia de datos e informacion\n\nUn dato es la unidad mínima de información, un dato por sí solo no tiene significado pero cuando se le agrega un contexto el dato se convierte en información" },
+                { nombre: "resumen de clase 2.txt", texto: "conceptos de estructuras de datos\n\nLas estructuras de datos son una forma de organizar y almacenar datos para poder usarlos, acceder a ellos y modificarlos de manera eficiente"},
+                { nombre: "actividad_1.txt", texto: "Act 1: ¿Cuál crees que es una aplicación que utilizas que dependa de estructuras de datos?\n\nR: Netflix, Youtube, Spotify" },
+                { nombre: "actividad_2.txt", texto: "Act 2: ¿Por qué crees que fueron diseñados así?\n\nR: Ya que es necesario por la forma en que actúan sus plataformas guardando gustos y todo su contenido y necesitarían una forma rápida y precisa de usar toda la información sin tardanzas." },
+                { nombre: "actividad_3.txt", texto: "Act 3: Un ejemplo cotidiano usando algoritmo que se relacione con estructura de datos\n\nR: Jugar videojuegos, tiene un algoritmo simple, enciende el aparato, juega, se aburre, deja de jugar, pero también necesitas más información y más datos para poder entender todo." }
+        ],
+            2: [
+                { nombre: "resumen de clase 1.txt", texto: "tipos de datos y algoridmos\n\nUn algoritmo es un conjunto ordenado de pasos que describen cómo resolver un problema o realizar una tarea. Los algoritmos permiten convertir datos en información mediante distintos procesos por eso son tan importantes." },
+                { nombre: "actividad_1.txt", texto: "Act 1: Un ejemplo cotidiano usando algoritmo que se relacione con estructura de datos\n\nR: Jugar videojuegos, tiene un algoritmo simple, enciende el aparato, juega, se aburre, deja de jugar, pero también necesitas más información y más datos para poder entender todo."},
+                { nombre: "actividad_2.txt", texto: "Act 2: ¿Qué pasaria si una aplicacion popular tuviera algoritmos ineficientes?\n\nLa aplicación sería mucho más lenta y pesada al intentar manejar grandes cantidades de datos"},
+                { nombre: "actividad_3.txt", texto: "Act 3: ¿Cómo influye el tamaño de los datos en el diseño del software?\n\nUn algoritmo que funciona bien con pocos datos puede volverse muy lento cuando los datos crecen"},
+                // Ejemplo: Para agregar algo a la clase 2, quita las barras // de abajo:
+                // { nombre: "tarea_nueva.txt", texto: "Escribe aquí tu pregunta.\n\nEscribe aquí tu respuesta." }
+            ],
+
+            3:[
+                { nombre: "resumen de clase 1.txt", texto: "NOTACIÓN BIG O\n\nLa notación Big O se usa para describir qué tan eficiente es un algoritmo, indicando cómo crece el tiempo o la memoria que necesita cuando aumenta la cantidad de datos de entrada." },
+                { nombre: "tarea_1.txt", texto: "¿Cómo creen que podrían organizar mejor la información en su repositorio web para que sea más clara y fácil de actualizar?\n\n mediante carpetas y archivos de texto similar a como se hace en el propio ordenador para mantener un registro de las actividades"},
+                { nombre: "tarea_2.txt", texto: "VENTAJAS DE UN EDITOR DE CÓDIGO Y FUNCIONES\n\nEl editor de código ofrece resaltado de sintaxis, lo que permite distinguir fácilmente palabras clave, variables y errores, haciendo el código más legible y reduciendo fallos"},
+            ]
+        };
+        // -----------------------------
+
         for (let i = 1; i <= 10; i++) {
             let files = [];
-            if (i === 1) {
-                files.push({ name: "actividad_1.txt", type: "file", content: "Act 1: ¿Cuál crees que es una aplicación que utilizas que dependa de estructuras de datos?\n\nR: Netflix, Youtube, Spotify" });
-                files.push({ name: "actividad_2.txt", type: "file", content: "Act 2: ¿Por qué crees que fueron diseñados así?\n\nR: Ya que es necesario por la forma en que actúan sus plataformas guardando gustos y todo su contenido y necesitarían una forma rápida y precisa de usar toda la información sin tardanzas." });
+            if (contenidoClases[i] && contenidoClases[i].length > 0) {
+                contenidoClases[i].forEach(archivo => {
+                    files.push({ name: archivo.nombre, type: "file", content: archivo.texto });
+                });
             } else {
                 files.push({ name: "preguntas.txt", type: "file", content: "Pregunta: ¿Qué tema se vio en la clase " + i + "?\n\nR: [Respuesta pendiente]" });
             }
@@ -130,24 +158,5 @@
         function closeNotepad() { document.getElementById('notepad-overlay').style.display = 'none'; }
         render();
     </script>
-=======
-    <h1>Clase 1</h1>
-
-    <h1>Clase 2</h1>
-    
-    <h1>Clase 3</h1>
-        distingue entre datos, informacion y
-    
-    <h1>act 1: cual crees que es una aplicacion que utilisas que dependa de estructuras de datos?</h1>
-    R: Netflix,Youtube,Spotify
-    <h1>act 2: por que crees que fueron diceñado asi?</h1>
-    R:Ya que es necesario por la forma en que actuan sus plataforma guardando gustos y todo su contenido y necesitarian una forma rapida y precisa de usar toda la informacion sin tardanzas
-    <h1>act 3: Un ejemplo cotidiano usando algoritmo que se relacione con estructura de datos</h1>
-    R:jugar video juegos, tiene un algoritmo simple, enciende el aparato, juega, se aburre, deja de jugar, pero tambien necesitas mas informacion y mas datos para poder entender todo, no samos quien juega, en que juega, que juega, a que hora juega, etc
-    <h1>que pasaria si una aplicacion popular tuviera algoritmos ineficiente?</h1>
-    R:se volveria lenta y tardaria cada vez nas en responder, entonces debido a la cantidad de errores que se producirian dejaria de ser popular
-    <h1>como influye el tamaño de los datos en el diseño del software </h1>
-    R:mientras mas datos es mas dificil manipularlos, darles sentido y orden
->>>>>>> c841e9f44f330a4b2bb3622da2d74182ce303794
 </body>
 </html>
