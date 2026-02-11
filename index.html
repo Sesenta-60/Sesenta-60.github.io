@@ -70,6 +70,11 @@
     </div>
 
     <script>
+        // Esto nos avisará si hay un error en la página web
+        window.onerror = function(message, source, lineno, colno, error) {
+            alert("Error detectado:\n" + message + "\nLínea: " + lineno);
+        };
+
         const fileSystem = {
             name: "root",
             type: "folder",
@@ -103,7 +108,6 @@
             ],
             6:[
                 { nombre: "resumen de clase 1.txt", texto: "importancia de las herramientas y planeacion de codigo\n\nEn esta clase vimos la importancia de incorporar un codigo planeado para mejorar y crecer a tus proyectos tanto personales como profecionales." },
-                
                 { nombre: "actividad_1.txt", texto: "¿De que manera influyen las herramientas de desarrollo en la organizacion y en la calidad del codigo?\n\nmientras mejores sean las herramientas usadas mejor calidad trabajo y mas claro sera para el usuario el como acceder y usar la erramienta, ademas de que el codigo debe estar preparado para un crecimiento exponencial en caso de que la empresa sobrepase su tamaño actual"},
             ]
 
@@ -126,6 +130,7 @@
         let pathStack = [];
 
         function render() {
+            console.log("render() called. Current directory:", currentDir.name, "Children count:", currentDir.children.length);
             const view = document.getElementById('file-view');
             view.innerHTML = '';
             document.getElementById('path').innerText = currentDir === fileSystem ? "Este Equipo > Clases" : "Este Equipo > Clases > " + currentDir.name;
@@ -133,6 +138,7 @@
             currentDir.children.forEach(item => {
                 const el = document.createElement('div');
                 el.className = 'icon';
+                console.log("Creating icon for:", item.name, "Type:", item.type);
                 el.onclick = () => openItem(item);
                 el.innerHTML = `
                     <div class="icon-img" style="color: ${item.type === 'folder' ? '#ffe680' : '#89cff0'}">${item.type === 'folder' ? '📁' : '📄'}</div>
@@ -162,6 +168,7 @@
         }
 
         function closeNotepad() { document.getElementById('notepad-overlay').style.display = 'none'; }
+        console.log("Initializing file explorer...");
         render();
     </script>
 </body>
