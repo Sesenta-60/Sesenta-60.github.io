@@ -127,17 +127,18 @@
         };
         // -----------------------------
 
-        for (let i = 1; i <= 10; i++) {
+        // Obtiene las claves (números de clase), las ordena numéricamente y luego itera
+        // para crear solo las carpetas que has definido en 'contenidoClases'.
+        Object.keys(contenidoClases).sort((a, b) => a - b).forEach(classNumber => {
+            const classContent = contenidoClases[classNumber];
             let files = [];
-            if (contenidoClases[i] && contenidoClases[i].length > 0) {
-                contenidoClases[i].forEach(archivo => {
-                    files.push({ name: archivo.nombre, type: "file", content: archivo.texto });
-                });
-            } else {
-                files.push({ name: "preguntas.txt", type: "file", content: "Pregunta: ¿Qué tema se vio en la clase " + i + "?\n\nR: [Respuesta pendiente]" });
-            }
-            fileSystem.children.push({ name: "Clase " + i, type: "folder", children: files });
-        }
+
+            classContent.forEach(archivo => {
+                files.push({ name: archivo.nombre, type: "file", content: archivo.texto });
+            });
+
+            fileSystem.children.push({ name: "Clase " + classNumber, type: "folder", children: files });
+        });
 
         let currentDir = fileSystem;
         let pathStack = [];
